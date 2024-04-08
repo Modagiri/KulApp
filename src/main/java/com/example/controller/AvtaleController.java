@@ -4,11 +4,10 @@ import com.example.domain.dto.AvtaleDTORequest;
 import com.example.domain.dto.AvtaleDTOResponse;
 import com.example.service.AvtaleService;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+
+import java.util.List;
 
 @Path("/avtale")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -22,8 +21,25 @@ public class AvtaleController {
     }
 
     @POST
-    public AvtaleDTOResponse opprettAvtale(AvtaleDTORequest avtaleDTORequest) {
-        return avtaleService.opprettAvtale(avtaleDTORequest);
+    public AvtaleDTOResponse opprettAvtaleForNyKunde(AvtaleDTORequest avtaleDTORequest) {
+        return avtaleService.opprettAvtaleForNyKunde(avtaleDTORequest);
     }
 
+    @GET
+    @Path("/kunde/{id}")
+    public List<AvtaleDTOResponse> hentAlleAvtalerForKunde(int id) {
+        return avtaleService.hentalleAvtalerForKunde(id);
+    }
+
+    @POST
+    @Path("/kunde")
+    public AvtaleDTOResponse opprettNyAvtaleForEksisterendeKunde(AvtaleDTORequest avtaleDTORequest) {
+        return avtaleService.opprettAvtaleForEksisterendeKunde(avtaleDTORequest.getKundenummer());
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public AvtaleDTOResponse slettAvtale(int id) {
+        return avtaleService.avsluttAvtale(id);
+    }
 }

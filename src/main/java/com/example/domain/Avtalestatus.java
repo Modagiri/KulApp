@@ -1,7 +1,8 @@
 package com.example.domain;
 
 public enum Avtalestatus {
-    UNDER_BEHANDLING,
-    AKTIV,
-    UTLOEPT
+    SIGNERT,
+    UTSENDELSE_FEILET,
+    SENDT,
+    AVSLUTTET
 }

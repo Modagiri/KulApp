@@ -1,26 +1,22 @@
-package com.example.domain.dto;
+package com.example.domain;
 
-public class AvtaleDTORequest {
+public class Kunde {
+
+    int kundenummer;
     private String navn;
     private int fodselsnummer;
     private String adresse;
     private String epost;
     private int telefonnummer;
-    private int kundenummer;
 
-    public AvtaleDTORequest(String navn, int fodselsnummer, String adresse, String epost, int telefonnummer) {
+
+    public Kunde(String navn, String adresse, int fodselsnummer, String epost, int telefonnummer, int kundenummer) {
         this.navn = navn;
-        this.fodselsnummer = fodselsnummer;
         this.adresse = adresse;
+        this.fodselsnummer = fodselsnummer;
         this.epost = epost;
         this.telefonnummer = telefonnummer;
-    }
-
-    public AvtaleDTORequest(int kundenummer) {
         this.kundenummer = kundenummer;
-    }
-
-    public AvtaleDTORequest() {
     }
 
     public String getNavn() {
@@ -62,7 +58,6 @@ public class AvtaleDTORequest {
     public void setTelefonnummer(int telefonnummer) {
         this.telefonnummer = telefonnummer;
     }
-
 
     public int getKundenummer() {
         return kundenummer;
